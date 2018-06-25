@@ -14,6 +14,7 @@ const knownModules = { DisplaySize, Toolbar, Resize };
 export default class ImageResize {
 
     constructor(quill, options = {}) {
+        console.log('*** quill-image-resize init');
         // save the quill reference and options
         this.quill = quill;
 
