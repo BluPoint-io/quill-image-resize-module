@@ -1,6 +1,6 @@
 {
-  "name": "quill-image-resize-module",
-  "version": "3.3.0",
+  "name": "@blupoint/quill-image-resize-module",
+  "version": "0.0.1",
   "description": "A module for Quill rich text editor to allow images to be resized.",
   "main": "image-resize.min.js",
   "scripts": {
@@ -23,10 +23,7 @@
   ],
   "author": "@hilkbahar",
   "contributors": [
-    {
-      "name": "Wikia",
-      "url": "https://github.com/Wikia"
-    }
+    "Wikia (https://github.com/Wikia)"
   ],
   "license": "MIT",
   "bugs": {
