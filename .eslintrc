@@ -17,17 +17,17 @@
   },
   "rules": {
 	"comma-dangle": [2, "always-multiline"],
-	"default-case": 1,
+	"default-case": 0,
 	"dot-notation": 1,
 	"no-cond-assign": 1,
 	"no-constant-condition": 2,
-	"no-eval": 2,
+	"no-eval": 0,
 	"no-extend-native": 2,
 	"no-fallthrough": 2,
 	"no-lone-blocks": 1,
 	"no-loop-func": 1,
 	"no-redeclare": 1,
-	"no-unused-vars": 1,
+	"no-unused-vars": 0,
 	"no-use-before-define": 0
   }
 }
