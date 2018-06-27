@@ -37,9 +37,9 @@ export class Toolbar extends BaseModule {
 			{
 				icon: IconLink,
 				apply: () => {
-					let findImg = Parchment.find(this.img);
-					let offset = findImg.offset(this.quill.scroll);
-					this.quill.setSelection(offset, this.img.outerHTML.length);
+					const findImg = Parchment.find(this.img);
+					const offset = findImg.offset(this.quill.scroll);
+					this.quill.setSelection(offset, 1, window.Quill.sources.USER);
 					const toolbar = this.quill.getModule('toolbar');
 					toolbar.container.querySelector('.ql-link').click();
 				},
