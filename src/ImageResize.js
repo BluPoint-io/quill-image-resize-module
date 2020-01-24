@@ -36,7 +36,7 @@ export default class ImageResize {
 		document.execCommand('enableObjectResizing', false, 'false');
 
 		// respond to clicks inside the editor
-		this.quill.root.addEventListener('click', this.handleClick, false);
+		document.querySelector('body').addEventListener('click', this.handleClick, false);
 
 		this.quill.root.parentNode.style.position = this.quill.root.parentNode.style.position || 'relative';
 
@@ -82,7 +82,8 @@ export default class ImageResize {
 	};
 
 	handleClick = (evt) => {
-		if (evt.target && evt.target.tagName && evt.target.tagName.toUpperCase() === 'IMG') {
+		const hasQuillEditor = evt.path.some(x => x.classList && x.classList.contains('ql-editor'));
+		if (hasQuillEditor && evt.target && evt.target.tagName && evt.target.tagName.toUpperCase() === 'IMG') {
 			if (this.img === evt.target) {
 				// we are already focused on this image
 				return;
