@@ -1,9 +1,11 @@
+import "babel-polyfill";
+
 import IconAlignLeft from 'quill/assets/icons/align-left.svg';
 import IconAlignCenter from 'quill/assets/icons/align-center.svg';
 import IconAlignRight from 'quill/assets/icons/align-right.svg';
 import IconLink from 'quill/assets/icons/link.svg';
+import IconHeader from 'quill/assets/icons/header.svg';
 import {BaseModule} from './BaseModule';
-// import Link from 'quill/formats/link';
 
 const Parchment = window.Quill.imports.parchment;
 const FloatStyle = new Parchment.Attributor.Style('float', 'float');
@@ -46,6 +48,26 @@ export class Toolbar extends BaseModule {
 				isApplied: () => {
 					const findImg = Parchment.find(this.img);
 					return findImg.parent.domNode.tagName === 'A'
+				},
+			},
+			{
+				icon: IconHeader,
+				apply: async () => {
+					const findImg = Parchment.find(this.img);
+					const imgTitle = findImg.domNode.alt;
+					let title;
+					if (window.handleLinkBlot) {
+						title = await window.handleLinkBlot(imgTitle);
+					} else {
+						title = prompt("Please enter a title", imgTitle);
+					}
+					if (title !== null) {
+						findImg.domNode.alt = title;
+					}
+				},
+				isApplied: () => {
+					const findImg = Parchment.find(this.img);
+					return findImg.domNode.alt && findImg.domNode.alt !== '';
 				},
 			},
 		]
@@ -124,9 +146,9 @@ export class Toolbar extends BaseModule {
 			const button = document.createElement('span');
 			buttons.push(button);
 			button.innerHTML = action.icon;
-			button.addEventListener('click', () => {
+			button.addEventListener('click', async () => {
 				buttons.forEach(button => button.style.filter = '');
-				action.apply();
+				await action.apply();
 				this.requestUpdate();
 			});
 			Object.assign(button.style, this.options.toolbarButtonStyles);

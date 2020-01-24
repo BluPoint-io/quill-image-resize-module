@@ -17,7 +17,10 @@ module.exports = {
 				use: [{
 					loader: 'babel-loader',
 					options: {
-						"plugins": ["babel-plugin-transform-class-properties"],
+						"plugins": [
+							"babel-plugin-transform-class-properties",
+							"transform-async-to-generator",
+						],
 					},
 				}],
 			},
