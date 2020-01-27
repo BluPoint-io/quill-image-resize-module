@@ -57,7 +57,7 @@ export class Toolbar extends BaseModule {
 					const imgTitle = findImg.domNode.alt;
 					let title;
 					if (window.handleLinkBlot) {
-						title = await window.handleLinkBlot(imgTitle);
+						title = await window.handleLinkBlot("Alt Etiketi Giriniz", imgTitle);
 					} else {
 						title = prompt("Please enter a title", imgTitle);
 					}
